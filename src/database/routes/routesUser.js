@@ -9,5 +9,6 @@ const router = Router();
 router.post('/', userMiddleware, userController.userControllerPost);
 router.get('/', authorizationValidation, userController.userControllerGet);
 router.get('/:id', authorizationValidation, userController.userControllerGetById);
+router.delete('/me', authorizationValidation, userController.userControllerDeleteMe);
 
 module.exports = router;
