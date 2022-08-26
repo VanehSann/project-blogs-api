@@ -20,7 +20,7 @@ const userController = {
     }
     response.status(200).json(ValidUser);
     },
-  userControllerDeleteMe: async (request, response) => {
+  userControllerDeleteMe: async (_request, response) => {
     const data = await User.findOne({ attributes: { exclude: ['password'] } });
     const removed = await User.destroy({ where: { id: data.dataValues.id } });
     response.status(204).json(removed);
