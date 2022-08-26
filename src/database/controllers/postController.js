@@ -1,3 +1,4 @@
+const { Op } = require('sequelize');
 const { BlogPost, User, Category, PostCategory } = require('../models');
 const decodeToken = require('../utils/decodeToken');
 const errorMessages = require('../middleware/errorMessages');
@@ -74,7 +75,28 @@ const postController = {
      } 
      await BlogPost.destroy({ where: { id } });
      return response.status(204).json();
- }, 
+ },
+ postControllerSearch: async (request, response) => {
+  const { q } = request.query;
+  const result = await BlogPost.findAll({ 
+    where: {
+    [Op.or]: [{ title: { [Op.like]: `%${q}%` } }, { content: { [Op.like]: `%${q}%` } }] },
+    include: [{ model: User, as: 'user', attributes: { exclude: ['password'] } },
+     { model: Category, as: 'categories' }],
+    });
+
+  if (q.length === 0) { 
+    const resultAll = await BlogPost.findAll({ 
+      include: [{ model: User, as: 'user', attributes: { exclude: ['password'] } },
+       { model: Category, as: 'categories' }],
+      });
+    
+  return response.status(200).json(resultAll); 
+}
+
+  response.status(200).json(result || []);
+},
+
 };
 
 module.exports = postController;

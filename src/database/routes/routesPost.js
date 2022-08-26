@@ -8,6 +8,7 @@ const router = Router();
 
 router.post('/', authorizationValidation, postMiddleware, postController.postControllerPost);
 router.get('/', authorizationValidation, postController.postControllerGet);
+router.get('/search', authorizationValidation, postController.postControllerSearch);
 router.get('/:id', authorizationValidation, postController.postControllerGetById);
 router.put('/:id', authorizationValidation, postController.postControllerPutById);
 router.delete('/:id', authorizationValidation, postController.postControllerDeleteById);
