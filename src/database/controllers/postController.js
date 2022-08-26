@@ -20,12 +20,25 @@ const postController = {
         published: new Date(), 
       }));
   },
-  postControllerGet: async (request, response) => {
+  postControllerGet: async (_request, response) => {
     const resultAllPosts = await BlogPost.findAll({ 
       include: [{ model: User, as: 'user', attributes: { exclude: ['password'] } },
        { model: Category, as: 'categories' }],
       });
     response.status(200).json(resultAllPosts);
+    },
+  postControllerGetById: async (request, response) => {
+    const id = Number(request.params.id);
+    const ValidPost = await BlogPost.findOne({ where: { id },
+      attributes: ['id', 'title', 'content', 'published', 'updated'],
+      include: [{ model: User, as: 'user', attributes: { exclude: ['password'] } },
+        { model: Category, as: 'categories' }],
+      });
+  
+      if (ValidPost === undefined || !ValidPost) {
+        return response.status(404).json({ message: 'Post does not exist' });
+      }
+    response.status(200).json(ValidPost);
     },
 };
 

@@ -12,6 +12,7 @@ const postMiddleware = async (request, response, next) => {
   if (categoriesArr.length === 0) {
     return response.status(400).json(errorMessages.NotFoundCategories); 
   }
+  
   next();
 };
 
