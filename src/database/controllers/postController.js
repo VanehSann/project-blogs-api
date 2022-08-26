@@ -57,7 +57,24 @@ const postController = {
     } 
     const updated = await result.update({ title, content }, { where: { id } });
     response.status(200).json(updated);
-    },
+  },
+  postControllerDeleteById: async (request, response) => {
+    const id = Number(request.params.id); 
+    const email = decodeToken(request.headers.authorization);
+    const data = await User.findOne({ where: { email },
+       attributes: { exclude: ['password'] } });
+     const result = await BlogPost.findOne({ 
+       where: { id },
+       include: [{ model: User, as: 'user', attributes: { exclude: ['password'] } },
+        { model: Category, as: 'categories' }],
+       });
+       if (!result) return response.status(404).json({ message: 'Post does not exist' });
+     if (data.dataValues.email !== result.user.email) {
+       return response.status(401).json({ message: 'Unauthorized user' });
+     } 
+     await BlogPost.destroy({ where: { id } });
+     return response.status(204).json();
+ }, 
 };
 
 module.exports = postController;

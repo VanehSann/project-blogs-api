@@ -10,5 +10,6 @@ router.post('/', authorizationValidation, postMiddleware, postController.postCon
 router.get('/', authorizationValidation, postController.postControllerGet);
 router.get('/:id', authorizationValidation, postController.postControllerGetById);
 router.put('/:id', authorizationValidation, postController.postControllerPutById);
+router.delete('/:id', authorizationValidation, postController.postControllerDeleteById);
 
 module.exports = router;
