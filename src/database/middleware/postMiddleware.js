@@ -1,13 +1,19 @@
 const errorMessages = require('./errorMessages');
+const { Category } = require('../models');
 
 const postMiddleware = async (request, response, next) => {
   const { title, content, categoryIds } = request.body;
-  let categoriesArr;
+  const ValidCategory = await Category.findAll();   
   const arr = [];
+
+   await ValidCategory.map((cat) => arr.push(cat.dataValues.id));     
+
+  let categoriesArr;
   
   if (!title && !content) return response.status(400).json(errorMessages.Missing);
   categoryIds.forEach((categoryId) => {
     categoriesArr = arr.filter((i) => i === categoryId);
+    arr.push(categoryId);
   });
   if (categoriesArr.length === 0) {
     return response.status(400).json(errorMessages.NotFoundCategories); 
