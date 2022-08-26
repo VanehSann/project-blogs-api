@@ -7,5 +7,6 @@ const authorizationValidation = require('../middleware/authorizationValidation')
 const router = Router();
 
 router.post('/', authorizationValidation, postMiddleware, postController.postControllerPost);
+router.get('/', authorizationValidation, postController.postControllerGet);
 
 module.exports = router;

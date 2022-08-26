@@ -20,7 +20,13 @@ const postController = {
         published: new Date(), 
       }));
   },
- 
+  postControllerGet: async (request, response) => {
+    const resultAllPosts = await BlogPost.findAll({ 
+      include: [{ model: User, as: 'user', attributes: { exclude: ['password'] } },
+       { model: Category, as: 'categories' }],
+      });
+    response.status(200).json(resultAllPosts);
+    },
 };
 
 module.exports = postController;
