@@ -1,5 +1,6 @@
 const { BlogPost, User, Category, PostCategory } = require('../models');
 const decodeToken = require('../utils/decodeToken');
+const errorMessages = require('../middleware/errorMessages');
 
 const postController = {
   postControllerPost: async (request, response) => {
@@ -40,6 +41,23 @@ const postController = {
       }
     response.status(200).json(ValidPost);
   },
+  postControllerPutById: async (request, response) => {
+    const { id } = request.params;
+    const { title, content } = request.body;
+    if (!title && !content) return response.status(400).json(errorMessages.Missing);
+
+    const email = decodeToken(request.headers.authorization);
+    const data = await User.findOne({ where: { email }, attributes: { exclude: ['password'] } });
+
+     const result = await BlogPost.findOne({ where: { id },
+        include: [{ model: User, as: 'user', attributes: { exclude: ['password'] } },
+         { model: Category, as: 'categories' }] });
+    if (data.dataValues.email !== result.user.email) {
+      return response.status(401).json({ message: 'Unauthorized user' });
+    } 
+    const updated = await result.update({ title, content }, { where: { id } });
+    response.status(200).json(updated);
+    },
 };
 
 module.exports = postController;
