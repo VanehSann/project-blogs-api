@@ -8,7 +8,6 @@ const router = Router();
 
 router.post('/', authorizationValidation, 
 categoriesMiddleware, categoriesController.categoriesControllerPost);
-router.get('/', authorizationValidation, 
-categoriesMiddleware, categoriesController.categoriesControllerGet);
+router.get('/', authorizationValidation, categoriesController.categoriesControllerGet);
 
 module.exports = router;
