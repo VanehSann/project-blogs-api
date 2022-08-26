@@ -26,7 +26,7 @@ const postController = {
        { model: Category, as: 'categories' }],
       });
     response.status(200).json(resultAllPosts);
-    },
+  },
   postControllerGetById: async (request, response) => {
     const id = Number(request.params.id);
     const ValidPost = await BlogPost.findOne({ where: { id },
@@ -39,7 +39,7 @@ const postController = {
         return response.status(404).json({ message: 'Post does not exist' });
       }
     response.status(200).json(ValidPost);
-    },
+  },
 };
 
 module.exports = postController;
