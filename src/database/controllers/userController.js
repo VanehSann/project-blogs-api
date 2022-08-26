@@ -12,7 +12,14 @@ const userController = {
     const ValidUser = await User.findAll({ attributes: { exclude: ['password'] } });
     response.status(200).json(ValidUser);
   },
-  
+  userControllerGetById: async (request, response) => {
+    const id = Number(request.params.id);
+    const ValidUser = await User.findOne({ attributes: { exclude: ['password'] }, where: { id } });
+    if (!ValidUser) {
+    return response.status(404).json({ message: 'User does not exist' });
+    }
+    response.status(200).json(ValidUser);
+    },
 };
 
 module.exports = userController;
