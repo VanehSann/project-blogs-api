@@ -2,10 +2,13 @@ const express = require('express');
 
 // ...
 
+const loginRoute = require('./database/routes/routesLogin');
+
 const app = express();
 
 app.use(express.json());
 
+app.use('/login', loginRoute);
 // ...
 
 // É importante exportar a constante `app`,
