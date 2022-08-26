@@ -7,6 +7,7 @@ const errorMessages = {
   TokenInvalid: { message: 'Expired or invalid token' },
   Missing: { message: 'Some required fields are missing' },
   NotFoundCategories: { message: '"categoryIds" not found' },
+  nameRequired: { message: '"name" is required' },
 };
 
 module.exports = errorMessages;
