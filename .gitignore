@@ -10,6 +10,10 @@
 
 # testing
 /coverage
+/tests
+/public
+/.trybe
+/.vscode
 
 # production
 /build
