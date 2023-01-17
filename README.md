@@ -23,7 +23,7 @@ Blogs API Project
   </table>
   
   <br>
-  <blockquote>
+  <div>
     <h2 align="left">
    Sobre
   </h2>
@@ -51,12 +51,12 @@ Foi desenvolvido uma API e um banco de dados para conteúdo de um blog. É uma a
     </tr>
  
 </table> 
-  </blockquote>
+  </div>
 
 <br>
 <br>
 
-<blockquote>
+<div>
    <h2>Trabalhando atualmente</h2>
   <p> Apesar do status do projeto está como concluido, há alguns pontos que pretendo melhorar na aplicação, que são: </p>
    <table>
@@ -73,7 +73,7 @@ Foi desenvolvido uma API e um banco de dados para conteúdo de um blog. É uma a
     <td>🟢</td>
   </tr>
 
-</table></blockquote>
+</table></div>
 
 <br>
 <br>
@@ -81,7 +81,7 @@ Foi desenvolvido uma API e um banco de dados para conteúdo de um blog. É uma a
 
 <div>
 
-  <blockquote>
+  <div>
     <h2 align="left">
 Tecnologias utilizadas ( Hard Skills )
 </h2>
@@ -97,13 +97,13 @@ Tecnologias utilizadas ( Hard Skills )
  - ORM - Associations 1:1, 1:N, N:N e Transactions | JWT - (JSON Web Token) | Sequelize | CRUD | REST
  </td></tr>
     </table>
-      </blockquote>
+      </div>
   </div>
   
 <br>
 <br>
 <div>
-  <blockquote>
+  <div>
     <h2 align="left">
 Layout
 </h2>
@@ -115,7 +115,7 @@ Layout
  MOBILE
  </td></tr> 
     </table>
-      </blockquote>
+      </div>
   </div>
   </section>
 
