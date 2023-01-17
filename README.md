@@ -1,7 +1,7 @@
 
 <p align="center"><b>
  <a href="#----">English version README 🇺🇸 </a> •
- <a href="#-blogs-api-project-------">README em Português 🇧🇷</a>
+ <a href="#blogs-api-project-------">README em Português 🇧🇷</a>
   </b>
 </p>
 <h1 align="center">
@@ -17,7 +17,7 @@ Blogs API Project
 <tr><p align="center"><b> </td> 
 <td> <a href="#---sobre--">Sobre</a></td> 
 <td>  <a href="#tecnologias-utilizadas--hard-skills-">Tecnologias utilizadas</a></td> 
-<td>  <a href="#layout">Layout</a></td> 
+<td>  <a href="#rode-a--aplicação-localmente">Layout</a></td> 
   </b>
   </p></tr>
   </table>
@@ -102,21 +102,16 @@ Tecnologias utilizadas ( Hard Skills )
   
 <br>
 <br>
-<div>
-  <div>
-    <h2 align="left">
-Layout
-</h2>
- <table>  
- <tr><td> 
-     WEBSITE
- </td><td><img src="./tryunfo.gif" /></td></tr>
- <tr><td> 
- MOBILE
- </td></tr> 
-    </table>
-      </div>
-  </div>
+<div align="left">
+        <h1>Rode a  aplicação localmente</h1>      
+  <p> cole os seguintes comandos no seu terminal:</p>
+      
+        git clone git@github.com:VanehSann/project-blogs-api.git
+        cd project-blogs-api
+        npm start
+        
+</div>
+        <br/>
   </section>
 
  <h1 align="center">  🇺🇸  </h1>
